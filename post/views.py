@@ -1,3 +1,24 @@
-from django.shortcuts import render
+from rest_framework import permissions, viewsets
 
-# Create your views here.
+from .models import Media, Post
+from .serializers import MediaSerializer, PostSerializer
+
+
+class MediaViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for media files information
+    """
+
+    queryset = Media.objects.all()
+    serializer_class = MediaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for posts
+    """
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
