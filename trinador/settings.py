@@ -36,6 +36,7 @@ SECRET_KEY = 'django-insecure-q)(=^z1z6vz%i+((wi@hw)je3)0z-e#vi(4ju%4nt8oq^ze)^&
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -46,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Disable CORS
+    'corsheaders',
     # Enable Geo Django
     'django.contrib.gis',
     # Django REST Framework
@@ -66,6 +69,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Disable CORS
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'trinador.urls'

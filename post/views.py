@@ -19,6 +19,6 @@ class PostViewSet(viewsets.ModelViewSet):
     API endpoint for posts
     """
 
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-date_created')
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]

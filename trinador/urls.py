@@ -19,9 +19,13 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 
 from authentication.views import UserDetailViewSet
+from post.views import PostViewSet
 
 router = routers.DefaultRouter()
+# Authentication
 router.register(r'user-detail', UserDetailViewSet)
+# Posts
+router.register(r'posts', PostViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
