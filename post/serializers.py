@@ -12,7 +12,7 @@ class MediaSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
-    user = UserDetailSerializer(read_only=True)
+    user_data = serializers.SerializerMethodField('get_user_data', read_only=True)
 
     class Meta:
         model = Post
@@ -26,5 +26,9 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             'date_created',
             'date_updated',
             'user',
+            'user_data',
             'media',
         ]
+
+    def get_user_data(self, obj):
+        return UserDetailSerializer(obj.user, context=self.context).data
