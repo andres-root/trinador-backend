@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     # Project Apps
     'authentication.apps.AuthenticationConfig',
     'post.apps.PostConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
